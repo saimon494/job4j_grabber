@@ -8,6 +8,8 @@ services:
 before_install:
   - psql -c 'create database tracker;' -U postgres
 
+sudo: false
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
