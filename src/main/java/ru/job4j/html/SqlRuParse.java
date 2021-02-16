@@ -57,8 +57,9 @@ public class SqlRuParse {
         return date;
     }
 
-    public static void main(String[] args) throws IOException {
-        Document doc = Jsoup.connect("https://www.sql.ru/forum/job-offers").get();
+    public static void parsePage(int page) throws IOException {
+        String url = String.format("https://www.sql.ru/forum/job-offers/%d", page);
+        Document doc = Jsoup.connect(url).get();
         Elements row = doc.select(".postslisttopic");
         Elements dataRow = doc.select("td[style].altCol");
         for (int i = 0; i < row.size(); i++) {
@@ -66,8 +67,13 @@ public class SqlRuParse {
             System.out.println(href.attr("href"));
             System.out.println(href.text());
             Element data = dataRow.get(i);
-            System.out.println(data.text());
             System.out.println(parseDate(data.text()));
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        for (int i = 1; i <= 5; i++) {
+            parsePage(i);
         }
     }
 }
