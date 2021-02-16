@@ -62,17 +62,30 @@ public class SqlRuParse {
         Document doc = Jsoup.connect(url).get();
         Elements row = doc.select(".postslisttopic");
         Elements dataRow = doc.select("td[style].altCol");
+
         for (int i = 0; i < row.size(); i++) {
             Element href = row.get(i).child(0);
-            System.out.println(href.attr("href"));
-            System.out.println(href.text());
-            Element data = dataRow.get(i);
-            System.out.println(parseDate(data.text()));
+            if (!row.get(i).text().contains("Важно")) {
+                System.out.println(href.attr("href"));
+                System.out.println(href.text());
+                Element data = dataRow.get(i);
+                System.out.println(parseDate(data.text()));
+                parsePost(href);
+            }
         }
     }
 
+    public static void parsePost(Element href) throws IOException {
+        Document doc = Jsoup.connect(href.attr("href")).get();
+        Element text = doc.select(".msgBody").get(1);
+        System.out.println(text.text());
+        Element dataText = doc.selectFirst(".msgFooter");
+        System.out.println(parseDate(dataText.text()
+                .substring(0, dataText.text().indexOf("[") - 1)));
+    }
+
     public static void main(String[] args) throws IOException {
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 1; i++) {
             parsePage(i);
         }
     }
