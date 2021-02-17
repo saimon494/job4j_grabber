@@ -11,19 +11,19 @@ public class SqlRuParseTest {
 
     @Test
     public void parseDate1() {
-        LocalDateTime date = LocalDateTime.of(2021,2,8,23,30);
+        LocalDateTime date = LocalDateTime.of(2021, 2, 8, 23, 30);
         assertEquals(date, SqlRuParse.parseDate("8 фев 21, 23:30"));
     }
 
     @Test
     public void parseDate2() {
-        LocalDateTime date = LocalDateTime.of(2020, 3,12,1,43);
+        LocalDateTime date = LocalDateTime.of(2020, 3, 12, 1, 43);
         assertEquals(date, SqlRuParse.parseDate("12 мар 20, 01:43"));
     }
 
     @Test
     public void parseDate3() {
-        LocalDateTime date = LocalDateTime.of(2019, 12,2,22, 29);
+        LocalDateTime date = LocalDateTime.of(2019, 12, 2, 22, 29);
         assertEquals(date, SqlRuParse.parseDate("2 дек 19, 22:29"));
     }
 
