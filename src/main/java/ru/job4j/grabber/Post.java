@@ -6,12 +6,22 @@ public class Post {
     private String name;
     private String description;
     private String link;
-    private LocalDateTime date;
+    private LocalDateTime createDate;
 
-    public Post(String name, String description, String link, LocalDateTime date) {
+    public Post(String name, String description, String link, LocalDateTime createDate) {
         this.name = name;
         this.description = description;
         this.link = link;
-        this.date = date;
+        this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "\nPost {"
+                + "name = '" + name + '\''
+                + ",\n description = '" + description + '\''
+                + ",\n link = '" + link + '\''
+                + ",\n createDate = " + createDate
+                + '}';
     }
 }
