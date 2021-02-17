@@ -16,7 +16,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.url>jdbc:postgresql://localhost/tracker</db.url>
+                <db.url>jdbc:postgresql://localhost/grabber</db.url>
                 <db.username>postgres</db.username>
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
@@ -24,7 +24,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/grabber</db.url>
                 <db.username>postgres</db.username>
                 <db.password>1331</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -33,7 +33,7 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/grabber</db.url>
                 <db.username>postgres</db.username>
                 <db.password>1331</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -45,7 +45,7 @@
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
         <db.driver>org.postgresql.Driver</db.driver>
-        <db.url>url=jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+        <db.url>url=jdbc:postgresql://127.0.0.1:5432/grabber</db.url>
         <db.username>postgres</db.username>
         <db.password>1331</db.password>
     </properties>
