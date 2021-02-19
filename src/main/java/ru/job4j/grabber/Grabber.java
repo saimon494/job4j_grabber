@@ -62,7 +62,7 @@ public class Grabber implements Grab {
             Store store = (Store) map.get("store");
             Parse parse = (Parse) map.get("parse");
             try {
-                List<Post> posts = parse.list("https://www.sql.ru/forum/job-offers/2");
+                List<Post> posts = parse.list("https://www.sql.ru/forum/job-offers");
                 for (Post post : posts) {
                     store.save(post);
                 }

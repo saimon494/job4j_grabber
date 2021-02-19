@@ -16,13 +16,17 @@ public class SqlRuParse implements Parse {
     @Override
     public List<Post> list(String link) throws IOException {
         List<Post> posts = new ArrayList<>();
-        Document doc = Jsoup.connect(link).get();
-        Elements row = doc.select(".postslisttopic");
-        for (int i = 0; i < row.size(); i++) {
-            Element href = row.get(i).child(0);
-            if (!row.get(i).text().contains("Важно")) {
-                posts.add(detail(href.attr("href")));
+        for (int j = 1; j <= 5; j++) {
+            link = String.format(link + "/%d", j);
+            Document doc = Jsoup.connect(link).get();
+            Elements row = doc.select(".postslisttopic");
+            for (int i = 0; i < row.size(); i++) {
+                Element href = row.get(i).child(0);
+                if (!row.get(i).text().contains("Важно")) {
+                    posts.add(detail(href.attr("href")));
+                }
             }
+            link = link.substring(0, link.length() - 2);
         }
         return posts;
     }
